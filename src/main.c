@@ -6,11 +6,14 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:14:47 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/07 18:34:07 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/07 19:01:31 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+//modifier error_handling pour le message d'erreurm je le laissep our les test pour l'isntant.
+//erreur lors de l'ajout des nombres, actuellement il faut inverser tous les nombres car le premier argument doit etre celui qui sera au top
 
 int	main(int argc, char *argv[])
 {
