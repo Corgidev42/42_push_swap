@@ -6,12 +6,13 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:12:19 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/07 16:04:30 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/07 17:31:40 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Fait une rotation inversée sur la pile 'a'
 void	rra(t_stack *a)
 {
 	t_node	*temp;

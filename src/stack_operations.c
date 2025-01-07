@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:15:11 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/07 15:30:53 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/07 17:22:12 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,31 +58,32 @@ int	pop(t_stack *stack)
 }
 
 // Afficher les 2 piles
-void	print_stacks(t_stack *stack_a, t_stack *stack_b)
+void	print_stacks(const char *message, t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*current_a;
 	t_node	*current_b;
 
+	ft_printf("%s\n", message);
 	current_a = stack_a->top;
 	current_b = stack_b->top;
-	ft_printf("[A]   [B]\n");
 	while (current_a || current_b)
 	{
 		if (current_a)
 		{
-			ft_printf("%d    ", current_a->value); // Affiche la valeur de 'A'
+			ft_printf("%d    ", current_a->value);
 			current_a = current_a->next;
 		}
 		else
-			ft_printf("     "); // Espace si la pile A est vide
+			ft_printf("     ");
 		if (current_b)
 		{
-			ft_printf("%d", current_b->value); // Affiche la valeur de 'B'
+			ft_printf("%d", current_b->value);
 			current_b = current_b->next;
 		}
 		ft_printf("\n");
 	}
-	ft_printf("\n");
+	ft_printf("_ _\n");
+	ft_printf("a b\n\n");
 }
 
 // Vérifier si une pile est vide

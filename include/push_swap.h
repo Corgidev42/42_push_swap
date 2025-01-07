@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:16:06 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/07 15:52:25 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:29:19 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -31,7 +32,8 @@ typedef struct s_stack
 t_stack				*create_stack(void);
 void				push(t_stack *stack, int value);
 int					pop(t_stack *stack);
-void				print_stacks(t_stack *stack_a, t_stack *stack_b);
+void				print_stacks(const char *message, t_stack *stack_a,
+						t_stack *stack_b);
 int					is_empty(t_stack *stack);
 
 // instructions.c
@@ -47,9 +49,12 @@ void				rb(t_stack *b);
 void				rr(t_stack *a, t_stack *b);
 
 void				rra(t_stack *a);
-// Fait une rotation inversée sur la pile 'a'
 void				rrb(t_stack *b);
-// Fait une rotation inversée sur la pile 'b'
 void				rrr(t_stack *a, t_stack *b);
-// Fait une rotation inversée sur les deux piles
+
+// error_handling.c
+int					check_digit_and_sign(char *str);
+int					check_range(char *str);
+int					check_entry(char *argv[]);
+
 #endif
