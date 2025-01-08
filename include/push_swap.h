@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:16:06 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/07 18:29:19 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/08 09:11:07 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,10 @@ void				rrr(t_stack *a, t_stack *b);
 int					check_digit_and_sign(char *str);
 int					check_range(char *str);
 int					check_entry(char *argv[]);
+
+// sorting.c
+int					sort_stack(t_stack *stack_a, t_stack *stack_b);
+int					find_smallest(t_stack *stack_a);
+int					is_in_top_half(t_stack *stack_a, int smallest);
 
 #endif

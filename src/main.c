@@ -6,14 +6,11 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:14:47 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/07 19:01:31 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/08 09:12:20 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//modifier error_handling pour le message d'erreurm je le laissep our les test pour l'isntant.
-//erreur lors de l'ajout des nombres, actuellement il faut inverser tous les nombres car le premier argument doit etre celui qui sera au top
 
 int	main(int argc, char *argv[])
 {
@@ -30,16 +27,19 @@ int	main(int argc, char *argv[])
 		{
 			while (argv[i])
 			{
-				push(stack_a, ft_atoi(argv[i]));
+				push(stack_b, ft_atoi(argv[i]));
+				i++;
+			}
+			i = 0;
+			while (i < argc)
+			{
+				pa(stack_a, stack_b);
 				i++;
 			}
 			print_stacks("test", stack_a, stack_b);
+			ft_printf("Nombre d'operation : %d\n" ,sort_stack(stack_a, stack_b));
+			print_stacks("sorted", stack_a, stack_b);
 		}
-	}
-	else
-	{
-		ft_printf("./push_swap [value1] [value2] [value3]...\n");
-		ft_printf("ex : ./push_swap 2 1 3 6 5 8\n");
 	}
 	free(stack_a);
 	free(stack_b);

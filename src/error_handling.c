@@ -6,13 +6,12 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:15:48 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/07 19:01:56 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/08 08:56:18 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Gestion des erreurs d’entrée.
 #include "push_swap.h"
-#include <stdlib.h>
 
 // Fonction pour vérifier les chiffres et les signes
 int	check_digit_and_sign(char *str)
@@ -26,7 +25,7 @@ int	check_digit_and_sign(char *str)
 	{
 		if (!ft_isdigit(str[y]))
 		{
-			ft_printf("Invalid character detected in: %s\n", str);
+			ft_printf("Error\n");
 			return (0);
 		}
 		y++;
@@ -42,7 +41,7 @@ int	check_range(char *str)
 	num = ft_atoi(str);
 	if (num < INT_MIN || num > INT_MAX)
 	{
-		ft_printf("Value out of range: %s\n", str);
+		ft_printf("Error\n");
 		return (0);
 	}
 	return (1);
@@ -57,7 +56,10 @@ int	check_duplicate(char *str, char *argv[], int index)
 	while (i < index)
 	{
 		if (ft_strcmp(argv[i], str) == 0)
+		{
+			ft_printf("Error\n");
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -76,10 +78,7 @@ int	check_entry(char *argv[])
 		if (!check_range(argv[i]))
 			return (0);
 		if (!check_duplicate(argv[i], argv, i))
-		{
-			ft_printf("Duplicate value found: %s\n", argv[i]);
 			return (0);
-		}
 		i++;
 	}
 	return (1);
