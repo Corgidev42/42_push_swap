@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:14:54 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/07 15:31:35 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:31:48 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include "push_swap.h"
 
-// Swap les deux premiers éléments de la pile 'a'
 void	sa(t_stack *a)
 {
 	int	temp;
@@ -25,35 +24,55 @@ void	sa(t_stack *a)
 		a->top->value = a->top->next->value;
 		a->top->next->value = temp;
 	}
+	ft_printf("sa\n");
 }
 
-// Swap les deux premiers éléments de la pile 'b'
 void	sb(t_stack *b)
 {
-	sa(b);
+	int	temp;
+
+	temp = b->top->value;
+	if (b->size > 1)
+	{
+		b->top->value = b->top->next->value;
+		b->top->next->value = temp;
+	}
+	ft_printf("sb\n");
 }
 
-// Swap les deux premiers éléments des deux piles
 void	ss(t_stack *a, t_stack *b)
 {
-	sa(a);
-	sb(b);
+	int	temp;
+
+	temp = a->top->value;
+	if (a->size > 1)
+	{
+		a->top->value = a->top->next->value;
+		a->top->next->value = temp;
+	}
+	temp = b->top->value;
+	if (b->size > 1)
+	{
+		b->top->value = b->top->next->value;
+		b->top->next->value = temp;
+	}
+	ft_printf("ss\n");
 }
 
-// Push le premier élément de 'b' vers 'a'
 void	pa(t_stack *a, t_stack *b)
 {
 	if (is_empty(b))
 		return ;
 	push(a, b->top->value);
 	pop(b);
+	ft_printf("pa\n");
 }
 
-// Push le premier élément de 'a' vers 'b'
 void	pb(t_stack *a, t_stack *b)
 {
 	if (is_empty(a))
 		return ;
 	push(b, a->top->value);
 	pop(a);
+	ft_printf("pb\n");
 }

@@ -6,14 +6,13 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:15:48 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/08 08:56:18 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:29:37 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Gestion des erreurs d’entrée.
 #include "push_swap.h"
 
-// Fonction pour vérifier les chiffres et les signes
 int	check_digit_and_sign(char *str)
 {
 	int	y;
@@ -33,7 +32,6 @@ int	check_digit_and_sign(char *str)
 	return (1);
 }
 
-// Fonction pour vérifier que la valeur est dans la plage valide
 int	check_range(char *str)
 {
 	int	num;
@@ -47,7 +45,6 @@ int	check_range(char *str)
 	return (1);
 }
 
-// Fonction pour vérifier si un nombre est déjà dans la liste
 int	check_duplicate(char *str, char *argv[], int index)
 {
 	int	i;
@@ -65,7 +62,6 @@ int	check_duplicate(char *str, char *argv[], int index)
 	return (1);
 }
 
-// Fonction principale pour vérifier les entrées
 int	check_entry(char *argv[])
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:15:11 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/07 17:22:12 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:29:09 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 // Fonctions pour gérer les piles (ajout/suppression, affichage).
 
-// Fonction pour créer une pile vide
 t_stack	*create_stack(void)
 {
 	t_stack	*stack;
@@ -26,7 +25,6 @@ t_stack	*create_stack(void)
 	return (stack);
 }
 
-// Ajouter un élément (push)
 void	push(t_stack *stack, int value)
 {
 	t_node	*new_node;
@@ -38,7 +36,6 @@ void	push(t_stack *stack, int value)
 	stack->size++;
 }
 
-// Retirer un élément (pop)
 int	pop(t_stack *stack)
 {
 	t_node	*temp;
@@ -47,7 +44,7 @@ int	pop(t_stack *stack)
 	if (stack->top == NULL)
 	{
 		ft_printf("Stack is empty!\n");
-		return (-1); // ou autre valeur pour signaler une erreur
+		return (-1);
 	}
 	temp = stack->top;
 	value = temp->value;
@@ -57,7 +54,6 @@ int	pop(t_stack *stack)
 	return (value);
 }
 
-// Afficher les 2 piles
 void	print_stacks(const char *message, t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*current_a;
@@ -86,8 +82,7 @@ void	print_stacks(const char *message, t_stack *stack_a, t_stack *stack_b)
 	ft_printf("a b\n\n");
 }
 
-// Vérifier si une pile est vide
 int	is_empty(t_stack *stack)
 {
-	return (stack->size == 0);
+	return (stack == NULL || stack->top == NULL);
 }

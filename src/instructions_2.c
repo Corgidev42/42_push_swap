@@ -6,13 +6,12 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:12:08 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/07 15:51:27 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:36:36 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Fait une rotation sur la pile 'a'
 void	ra(t_stack *a)
 {
 	t_node	*temp;
@@ -28,17 +27,51 @@ void	ra(t_stack *a)
 		last->next = temp;
 		temp->next = NULL;
 	}
+	ft_printf("ra\n");
 }
 
-// Fait une rotation sur la pile 'b'
 void	rb(t_stack *b)
 {
-	ra(b);
+	t_node	*temp;
+	t_node	*last;
+
+	if (b->size > 1)
+	{
+		temp = b->top;
+		last = b->top;
+		while (last->next)
+			last = last->next;
+		b->top = b->top->next;
+		last->next = temp;
+		temp->next = NULL;
+	}
+	ft_printf("rb\n");
 }
 
-// Fait une rotation sur les deux piles
 void	rr(t_stack *a, t_stack *b)
 {
-	ra(a);
-	rb(b);
+	t_node	*temp;
+	t_node	*last;
+
+	if (a->size > 1)
+	{
+		temp = a->top;
+		last = a->top;
+		while (last->next)
+			last = last->next;
+		a->top = a->top->next;
+		last->next = temp;
+		temp->next = NULL;
+	}
+	if (b->size > 1)
+	{
+		temp = b->top;
+		last = b->top;
+		while (last->next)
+			last = last->next;
+		b->top = b->top->next;
+		last->next = temp;
+		temp->next = NULL;
+	}
+	ft_printf("rr\n");
 }
