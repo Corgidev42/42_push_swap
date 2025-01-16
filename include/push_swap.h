@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:16:06 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 16:30:31 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:07:15 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,12 +197,62 @@ int					check_entry(char *argv[]);
 int					check_duplicate(char *str, char *argv[], int index);
 
 // sorting.c
-int					get_max(t_stack stack);
-int					get_min(t_stack stack);
-int					search_index(int value, t_stack *stack_b);
-int					search_max_index(t_stack *stack);
-void				do_move(t_move *move, t_stack *stack_a, t_stack *stack_b);
-void				best_move(t_move *move);
-void				sorting(t_stack *stack_a, t_stack *stack_b);
+
+/**
+ * @brief Get the maximum value in the stack.
+ *
+ * @param stack The stack to search.
+ * @return The maximum value in the stack.
+ */
+int get_max(t_stack stack);
+
+/**
+ * @brief Get the minimum value in the stack.
+ *
+ * @param stack The stack to search.
+ * @return The minimum value in the stack.
+ */
+int get_min(t_stack stack);
+
+/**
+ * @brief Search for the index of a value in stack_b.
+ *
+ * @param value The value to search for.
+ * @param stack_b The stack to search in.
+ * @return The index of the value in stack_b, or -1 if not found.
+ */
+int search_index(int value, t_stack *stack_b);
+
+/**
+ * @brief Search for the index of the maximum value in stack_b.
+ *
+ * @param stack The stack to search in.
+ * @return The index of the maximum value in stack_b.
+ */
+int search_max_index(t_stack *stack);
+
+/**
+ * @brief Perform a move operation on the stacks.
+ *
+ * @param move The move to perform.
+ * @param stack_a The first stack.
+ * @param stack_b The second stack.
+ */
+void do_move(t_move *move, t_stack *stack_a, t_stack *stack_b);
+
+/**
+ * @brief Determine the best move to perform.
+ *
+ * @param move The move to determine.
+ */
+void best_move(t_move *move);
+
+/**
+ * @brief Sort the elements in stack_a using stack_b as auxiliary.
+ *
+ * @param stack_a The stack to sort.
+ * @param stack_b The auxiliary stack.
+ */
+void sorting(t_stack *stack_a, t_stack *stack_b);
 
 #endif

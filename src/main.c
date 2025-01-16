@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:14:47 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 16:52:00 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:03:57 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ int	main(int argc, char *argv[])
 	{
 		if (check_entry(argv) == 1)
 		{
-			while (argc - i > 1)
+			while (argc - i >= 1)
 			{
 				push(stack_a, ft_atoi(argv[argc - i]));
 				i++;
 			}
+			// print_stacks("before", stack_a, stack_b);
 			sorting(stack_a, stack_b);
+			// print_stacks("after", stack_a, stack_b);
 		}
 	}
 	free(stack_a);
