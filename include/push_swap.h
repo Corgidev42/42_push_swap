@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:16:06 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 17:07:15 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:21:12 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,62 +197,63 @@ int					check_entry(char *argv[]);
 int					check_duplicate(char *str, char *argv[], int index);
 
 // sorting.c
-
 /**
- * @brief Get the maximum value in the stack.
+ * @brief Get the maximum value in a stack.
  *
  * @param stack The stack to search.
  * @return The maximum value in the stack.
  */
-int get_max(t_stack stack);
+int					get_max(t_stack stack);
 
 /**
- * @brief Get the minimum value in the stack.
+ * @brief Get the minimum value in a stack.
  *
  * @param stack The stack to search.
  * @return The minimum value in the stack.
  */
-int get_min(t_stack stack);
+int					get_min(t_stack stack);
 
 /**
- * @brief Search for the index of a value in stack_b.
+
+	* @brief Search for the index of the closest value less than the given value in stack_b.
  *
- * @param value The value to search for.
- * @param stack_b The stack to search in.
- * @return The index of the value in stack_b, or -1 if not found.
+ * @param value The value to compare against.
+ * @param stack_b The stack to search.
+ * @return The index of the closest value less than the given value.
  */
-int search_index(int value, t_stack *stack_b);
+int					search_index(int value, t_stack *stack_b);
 
 /**
- * @brief Search for the index of the maximum value in stack_b.
+ * @brief Search for the index of the maximum value in a stack.
  *
- * @param stack The stack to search in.
- * @return The index of the maximum value in stack_b.
+ * @param stack The stack to search.
+ * @return The index of the maximum value in the stack.
  */
-int search_max_index(t_stack *stack);
+int					search_max_index(t_stack *stack);
 
 /**
- * @brief Perform a move operation on the stacks.
+ * @brief Perform the moves specified in the move structure on the given stacks.
  *
- * @param move The move to perform.
+ * @param move The move structure containing the number of rotations to perform.
  * @param stack_a The first stack.
  * @param stack_b The second stack.
  */
-void do_move(t_move *move, t_stack *stack_a, t_stack *stack_b);
+void				do_move(t_move *move, t_stack *stack_a, t_stack *stack_b);
 
 /**
- * @brief Determine the best move to perform.
+
+	* @brief Determine the best move to perform based on the current move structure.
  *
- * @param move The move to determine.
+ * @param move The move structure to update with the best move.
  */
-void best_move(t_move *move);
+void				best_move(t_move *move);
 
 /**
- * @brief Sort the elements in stack_a using stack_b as auxiliary.
+ * @brief Sort the elements in stack_a using stack_b as auxiliary storage.
  *
  * @param stack_a The stack to sort.
  * @param stack_b The auxiliary stack.
  */
-void sorting(t_stack *stack_a, t_stack *stack_b);
+void				sorting(t_stack *stack_a, t_stack *stack_b);
 
 #endif
