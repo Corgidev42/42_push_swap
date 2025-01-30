@@ -11,7 +11,10 @@ SRC = src/main.c \
       src/instructions_3.c \
       src/stack_operations.c \
       src/sorting.c \
-      src/error_handling.c
+      src/error_handling.c\
+	  src/tool.c\
+	  src/tool_2.c\
+	  src/tool_3.c
 
 OBJ = $(SRC:.c=.o)
 

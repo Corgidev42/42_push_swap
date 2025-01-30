@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:16:06 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 15:21:12 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:55:41 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,9 +196,10 @@ int					check_entry(char *argv[]);
  */
 int					check_duplicate(char *str, char *argv[], int index);
 
-// sorting.c
+// tool.c
+
 /**
- * @brief Get the maximum value in a stack.
+ * @brief Gets the maximum value in the stack.
  *
  * @param stack The stack to search.
  * @return The maximum value in the stack.
@@ -206,7 +207,7 @@ int					check_duplicate(char *str, char *argv[], int index);
 int					get_max(t_stack stack);
 
 /**
- * @brief Get the minimum value in a stack.
+ * @brief Gets the minimum value in the stack.
  *
  * @param stack The stack to search.
  * @return The minimum value in the stack.
@@ -215,7 +216,7 @@ int					get_min(t_stack stack);
 
 /**
 
-	* @brief Search for the index of the closest value less than the given value in stack_b.
+	* @brief Searches for the index of the closest value less than the given value in stack_b.
  *
  * @param value The value to compare against.
  * @param stack_b The stack to search.
@@ -224,36 +225,123 @@ int					get_min(t_stack stack);
 int					search_index(int value, t_stack *stack_b);
 
 /**
- * @brief Search for the index of the maximum value in a stack.
+ * @brief Searches for the index of the maximum value in the stack.
  *
  * @param stack The stack to search.
  * @return The index of the maximum value in the stack.
  */
 int					search_max_index(t_stack *stack);
 
+// tool_2.c
 /**
- * @brief Perform the moves specified in the move structure on the given stacks.
+ * @brief Applies rotation moves to both stacks.
  *
- * @param move The move structure containing the number of rotations to perform.
- * @param stack_a The first stack.
- * @param stack_b The second stack.
+ * @param move The move structure containing the number of rotations.
+ * @param stack_a The first stack to rotate.
+ * @param stack_b The second stack to rotate.
+ */
+void				apply_rotation(t_move *move, t_stack *stack_a,
+						t_stack *stack_b);
+
+/**
+ * @brief Applies reverse rotation moves to both stacks.
+ *
+ * @param move The move structure containing the number of reverse rotations.
+ * @param stack_a The first stack to reverse rotate.
+ * @param stack_b The second stack to reverse rotate.
+ */
+void				apply_reverse_rotation(t_move *move, t_stack *stack_a,
+						t_stack *stack_b);
+
+/**
+ * @brief Executes the moves on the stacks.
+ *
+ * @param move The move structure containing the moves to execute.
+ * @param stack_a The first stack to apply the moves to.
+ * @param stack_b The second stack to apply the moves to.
  */
 void				do_move(t_move *move, t_stack *stack_a, t_stack *stack_b);
 
+// sorting.c
 /**
+ * @brief Updates the move structure with the best move.
+ *
+ * @param temp The temporary move structure to update.
+ * @param ra The number of rotations for stack a.
+ * @param rb The number of rotations for stack b.
+ * @param rra The number of reverse rotations for stack a.
+ * @param rrb The number of reverse rotations for stack b.
+ * @param best The current best cost to compare against.
+ */
+void				update_move(t_move *temp, int ra, int rb, int rra, int rrb,
+						int *best);
 
-	* @brief Determine the best move to perform based on the current move structure.
+/**
+ * @brief Determines the best move to perform.
  *
  * @param move The move structure to update with the best move.
  */
 void				best_move(t_move *move);
 
 /**
- * @brief Sort the elements in stack_a using stack_b as auxiliary storage.
+ * @brief Calculates the move for a given node in stack a.
  *
- * @param stack_a The stack to sort.
- * @param stack_b The auxiliary stack.
+ * @param stack_a The first stack.
+ * @param temp The current node in stack a.
+ * @param stack_b The second stack.
+ * @param temp_move The temporary move structure to update.
+ * @param index_a The index of the current node in stack a.
+ */
+void				calculate_move(t_stack *stack_a, t_node *temp,
+						t_stack *stack_b, t_move *temp_move, int index_a);
+
+/**
+ * @brief Selects the best move to perform from stack a to stack b.
+ *
+ * @param stack_a The first stack.
+ * @param stack_b The second stack.
+ * @param move The move structure to update with the best move.
+ */
+void				select_best_move(t_stack *stack_a, t_stack *stack_b,
+						t_move *move);
+
+/**
+ * @brief Sorts the elements in stack a using stack b.
+ *
+ * @param stack_a The first stack to sort.
+ * @param stack_b The second stack used for sorting.
  */
 void				sorting(t_stack *stack_a, t_stack *stack_b);
 
+// tool_3.c
+/**
+ * @brief Solves the sorting problem for the given stacks.
+ *
+ * @param stack_a The first stack to sort.
+ * @param stack_b The second stack used for sorting.
+ */
+void				solve(t_stack *stack_a, t_stack *stack_b);
+
+/**
+ * @brief Sorts a stack of 3 elements.
+ *
+ * @param stack_a The stack to sort.
+ */
+void				ps_sort_3(t_stack *stack_a);
+
+/**
+ * @brief Sorts a stack of 4 elements.
+ *
+ * @param stack_a The stack to sort.
+ * @param stack_b The auxiliary stack used for sorting.
+ */
+void				ps_sort_4(t_stack *stack_a, t_stack *stack_b);
+
+/**
+ * @brief Sorts a stack of 5 elements.
+ *
+ * @param stack_a The stack to sort.
+ * @param stack_b The auxiliary stack used for sorting.
+ */
+void				ps_sort_5(t_stack *stack_a, t_stack *stack_b);
 #endif

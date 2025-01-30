@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:14:47 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 15:14:24 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:55:59 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char *argv[])
 				push(stack_a, ft_atoi(argv[argc - i]));
 				i++;
 			}
-			sorting(stack_a, stack_b);
+			solve(stack_a, stack_b);
 		}
 	}
 	free(stack_a);
