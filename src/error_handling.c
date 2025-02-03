@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:15:48 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 16:29:37 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:52:43 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	check_entry(char *argv[])
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (argv[i])
 	{
 		if (!check_digit_and_sign(argv[i]))
@@ -78,4 +78,17 @@ int	check_entry(char *argv[])
 		i++;
 	}
 	return (1);
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }

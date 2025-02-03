@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:16:06 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/30 10:55:41 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:56:00 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,17 @@ int					check_entry(char *argv[]);
  */
 int					check_duplicate(char *str, char *argv[], int index);
 
+/**
+ * @brief Frees the memory allocated for a split string array.
+ *
+ * This function takes a double pointer to a character array (split) and frees
+ * all the memory allocated for each string in the array, as well as the memory
+ * allocated for the array itself.
+ *
+ * @param split A double pointer to the array of strings to be freed.
+ */
+void	free_split(char **split);
+
 // tool.c
 
 /**
@@ -267,14 +278,12 @@ void				do_move(t_move *move, t_stack *stack_a, t_stack *stack_b);
  * @brief Updates the move structure with the best move.
  *
  * @param temp The temporary move structure to update.
- * @param ra The number of rotations for stack a.
- * @param rb The number of rotations for stack b.
- * @param rra The number of reverse rotations for stack a.
- * @param rrb The number of reverse rotations for stack b.
+ * @param cost The 4 rotations structure.
  * @param best The current best cost to compare against.
  */
-void				update_move(t_move *temp, int ra, int rb, int rra, int rrb,
-						int *best);
+// void	update_move(t_move *temp, int ra, int rb, int rra, int rrb, int *best);
+void	update_move(t_move *temp, t_move move, int *best);
+
 
 /**
  * @brief Determines the best move to perform.
@@ -290,11 +299,9 @@ void				best_move(t_move *move);
  * @param temp The current node in stack a.
  * @param stack_b The second stack.
  * @param temp_move The temporary move structure to update.
- * @param index_a The index of the current node in stack a.
  */
-void				calculate_move(t_stack *stack_a, t_node *temp,
-						t_stack *stack_b, t_move *temp_move, int index_a);
-
+void	calculate_move(t_stack *stack_a, t_node *temp, t_stack *stack_b,
+		t_move *temp_move, int index_a);
 /**
  * @brief Selects the best move to perform from stack a to stack b.
  *

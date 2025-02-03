@@ -6,23 +6,20 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:36:16 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/30 10:40:18 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:49:10 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	update_move(t_move *temp, int ra, int rb, int rra, int rrb, int *best)
+void	update_move(t_move *temp, t_move move, int *best)
 {
 	int	cost;
 
-	cost = ra + rb + rra + rrb;
+	cost = move.nb_ra + move.nb_rb + move.nb_rra + move.nb_rrb;
 	if (cost < *best)
 	{
-		temp->nb_ra = ra;
-		temp->nb_rb = rb;
-		temp->nb_rra = rra;
-		temp->nb_rrb = rrb;
+		*temp = move;
 		*best = cost;
 	}
 }
@@ -31,15 +28,19 @@ void	best_move(t_move *move)
 {
 	int		best;
 	t_move	temp;
+	t_move	new_move;
 
 	best = move->nb_ra + move->nb_rb;
 	temp.nb_ra = move->nb_ra;
 	temp.nb_rb = move->nb_rb;
 	temp.nb_rra = 0;
 	temp.nb_rrb = 0;
-	update_move(&temp, move->nb_ra, 0, 0, move->nb_rrb, &best);
-	update_move(&temp, 0, move->nb_rb, move->nb_rra, 0, &best);
-	update_move(&temp, 0, 0, move->nb_rra, move->nb_rrb, &best);
+	new_move = (t_move){move->nb_ra, 0, 0, move->nb_rrb};
+	update_move(&temp, new_move, &best);
+	new_move = (t_move){0, move->nb_rb, move->nb_rra, 0};
+	update_move(&temp, new_move, &best);
+	new_move = (t_move){0, 0, move->nb_rra, move->nb_rrb};
+	update_move(&temp, new_move, &best);
 	*move = temp;
 }
 
