@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:36:59 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/03 13:44:14 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:43:14 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,21 @@ int	stack_is_sorting(t_stack *stack)
 	int		min;
 	int		i;
 	t_node	*current;
+	t_node	*next;
 
 	min = get_min(*stack);
 	current = stack->top;
-	while (current->next->value != min)
+	while (current->value != min)
 		current = current->next;
 	i = 0;
-	while (i < stack->size)
+	while (i < stack->size - 1)
 	{
-		if (current->value > current->next->value)
+		next = current->next;
+		if (!next)
+			next = stack->top;
+		if (current->value > next->value)
 			return (0);
-		current = current->next;
+		current = next;
 		i++;
 	}
 	return (1);

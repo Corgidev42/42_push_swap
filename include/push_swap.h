@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:16:06 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/03 13:46:27 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:33:49 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,5 +354,28 @@ void				ps_sort_4(t_stack *stack_a, t_stack *stack_b);
  */
 void				ps_sort_5(t_stack *stack_a, t_stack *stack_b);
 
+/**
+ * Vérifie si la pile est triée en ordre croissant, 
+ * en tenant compte d'une éventuelle rotation.
+ *
+ * La fonction procède comme suit :
+ * 1. Elle détermine la valeur minimale 
+ * présente dans la pile à l'aide de `get_min`.
+ * 2. Elle parcourt la pile depuis le sommet pour se positionner 
+ * juste avant le nœud contenant cette valeur minimale.
+ *    Cela permet de "redémarrer" le parcours à partir 
+ * du point où l'ordre croissant devrait débuter.
+ * 3. Ensuite, elle parcourt l'ensemble de la pile 
+ * (de taille `stack->size`) en comparant chaque nœud avec son suivant.
+ *    Si à un moment donné, la valeur du nœud courant 
+ * est supérieure à celle du nœud suivant,
+ *    la fonction retourne 0, indiquant que la pile 
+ * n'est pas triée.
+ * 4. Si l'ensemble des comparaisons respecte l'ordre 
+ * croissant, la fonction retourne 1.
+ *
+ * @param stack Pointeur vers la structure de la pile à vérifier.
+ * @return 1 si la pile est triée en ordre croissant, 0 sinon.
+ */
 int					stack_is_sorting(t_stack *stack);
 #endif
