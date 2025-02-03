@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:16:06 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/03 10:56:00 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:28:44 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -351,4 +351,6 @@ void				ps_sort_4(t_stack *stack_a, t_stack *stack_b);
  * @param stack_b The auxiliary stack used for sorting.
  */
 void				ps_sort_5(t_stack *stack_a, t_stack *stack_b);
+
+int					stack_is_sorting(t_stack *stack);
 #endif

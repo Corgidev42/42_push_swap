@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:36:16 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/30 17:49:10 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:24:53 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,19 @@ void	sorting(t_stack *stack_a, t_stack *stack_b)
 {
 	t_move	move;
 
-	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	while (stack_a->size > 0)
+	if (!stack_is_sorting(stack_a))
 	{
-		select_best_move(stack_a, stack_b, &move);
-		do_move(&move, stack_a, stack_b);
 		pb(stack_a, stack_b);
+		pb(stack_a, stack_b);
+		while (stack_a->size > 0)
+		{
+			select_best_move(stack_a, stack_b, &move);
+			do_move(&move, stack_a, stack_b);
+			pb(stack_a, stack_b);
+		}
+		while (stack_b->size > 0)
+			pa(stack_a, stack_b);
 	}
-	while (stack_b->size > 0)
-		pa(stack_a, stack_b);
 	while (stack_a->top->value != get_min(*stack_a))
 	{
 		if (search_max_index(stack_a) > stack_a->size / 2)

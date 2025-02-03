@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:15:11 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 16:29:09 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:28:05 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,25 @@ void	print_stacks(const char *message, t_stack *stack_a, t_stack *stack_b)
 int	is_empty(t_stack *stack)
 {
 	return (stack == NULL || stack->top == NULL);
+}
+
+int	stack_is_sorting(t_stack *stack)
+{
+	int		min;
+	int		i;
+	t_node	*current;
+
+	min = get_min(*stack);
+	current = stack->top;
+	while (current->next->value != min)
+		current = current->next;
+	i = 0;
+	while (i < stack->size)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+		i++;
+	}
+	return (1);
 }
