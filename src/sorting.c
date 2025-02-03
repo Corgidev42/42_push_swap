@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:36:16 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/03 11:24:53 by ezeppa           ###   ########.fr       */
+/*   Updated: 2025/02/03 13:45:49 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,17 @@ void	best_move(t_move *move)
 	*move = temp;
 }
 
-void	calculate_move(t_stack *stack_a, t_node *temp, t_stack *stack_b,
-		t_move *temp_move, int index_a)
+void	calculate_move(t_stacks stacks, t_node *temp,
+	t_move *temp_move, int index_a)
 {
 	temp_move->nb_ra = index_a;
-	temp_move->nb_rra = stack_a->size - index_a;
-	if (temp->value < get_max(*stack_b) && temp->value > get_min(*stack_b))
-		temp_move->nb_rb = search_index(temp->value, stack_b);
+	temp_move->nb_rra = stacks.stack_a->size - index_a;
+	if (temp->value < get_max(*(stacks.stack_b))
+		&& temp->value > get_min(*(stacks.stack_b)))
+		temp_move->nb_rb = search_index(temp->value, stacks.stack_b);
 	else
-		temp_move->nb_rb = search_max_index(stack_b);
-	temp_move->nb_rrb = stack_b->size - temp_move->nb_rb;
+		temp_move->nb_rb = search_max_index(stacks.stack_b);
+	temp_move->nb_rrb = stacks.stack_b->size - temp_move->nb_rb;
 	best_move(temp_move);
 }
 
@@ -68,7 +69,7 @@ void	select_best_move(t_stack *stack_a, t_stack *stack_b, t_move *move)
 	index_a = 0;
 	while (index_a < stack_a->size)
 	{
-		calculate_move(stack_a, temp, stack_b, &temp_move, index_a);
+		calculate_move((t_stacks){stack_a, stack_b}, temp, &temp_move, index_a);
 		if (index_a == 0 || (move->nb_ra + move->nb_rb + move->nb_rra
 				+ move->nb_rrb > temp_move.nb_ra + temp_move.nb_rb
 				+ temp_move.nb_rra + temp_move.nb_rrb))

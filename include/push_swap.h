@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:16:06 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/03 11:28:44 by ezeppa           ###   ########.fr       */
+/*   Updated: 2025/02/03 13:46:27 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ typedef struct s_move
 	int				nb_rra;
 	int				nb_rrb;
 }					t_move;
+
+typedef struct s_stacks
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+}	t_stacks;
 
 // stack_operations.c
 /**
@@ -205,8 +211,7 @@ int					check_duplicate(char *str, char *argv[], int index);
  *
  * @param split A double pointer to the array of strings to be freed.
  */
-void	free_split(char **split);
-
+void				free_split(char **split);
 // tool.c
 
 /**
@@ -224,10 +229,9 @@ int					get_max(t_stack stack);
  * @return The minimum value in the stack.
  */
 int					get_min(t_stack stack);
-
 /**
-
-	* @brief Searches for the index of the closest value less than the given value in stack_b.
+* @brief Searches for the index of the closest value less than 
+the given value in stack_b.
  *
  * @param value The value to compare against.
  * @param stack_b The stack to search.
@@ -281,9 +285,7 @@ void				do_move(t_move *move, t_stack *stack_a, t_stack *stack_b);
  * @param cost The 4 rotations structure.
  * @param best The current best cost to compare against.
  */
-// void	update_move(t_move *temp, int ra, int rb, int rra, int rrb, int *best);
-void	update_move(t_move *temp, t_move move, int *best);
-
+void				update_move(t_move *temp, t_move move, int *best);
 
 /**
  * @brief Determines the best move to perform.
@@ -300,8 +302,8 @@ void				best_move(t_move *move);
  * @param stack_b The second stack.
  * @param temp_move The temporary move structure to update.
  */
-void	calculate_move(t_stack *stack_a, t_node *temp, t_stack *stack_b,
-		t_move *temp_move, int index_a);
+void				calculate_move(t_stacks stacks, t_node *temp,
+						t_move *temp_move, int index_a);
 /**
  * @brief Selects the best move to perform from stack a to stack b.
  *

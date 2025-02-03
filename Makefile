@@ -1,76 +1,62 @@
-# Nom de l'exécutable principal
-NAME = push_swap
-
-# Nom de l'exécutable pour les tests
-TEST_NAME = test_push_swap
-
-# Fichiers sources et objets
-SRC = src/main.c \
-      src/instructions.c \
-      src/instructions_2.c \
-      src/instructions_3.c \
-      src/stack_operations.c \
-      src/sorting.c \
-      src/error_handling.c\
-	  src/tool.c\
-	  src/tool_2.c\
-	  src/tool_3.c
-
-OBJ = $(SRC:.c=.o)
-
-# Fichiers pour les tests
-TEST_SRC = src/test.c
-TEST_OBJ = $(TEST_SRC:.c=.o)
-
-# Flags de compilation
+# Compiler et flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude
+CFLAGS = -Wall -Wextra -Werror
 
-# Libft (située à la racine)
-LIBFT = libft.a
+# Nom du projet
+PROJECT_NAME = push_swap
 
-# Règle par défaut
-all: $(NAME)
+# Include path (répertoire contenant les fichiers headers du projet)
+INCLUDES = -Iinclude
 
-# Compilation de l'exécutable principal
-$(NAME): $(OBJ) $(LIBFT)
-	@echo "Compilation de $(NAME)..."
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
-	@echo "Compilation terminée."
+# Library path for libft.a (chemin vers libft.a)
+LIBFT_DIR = mylib
+LIBFT = $(LIBFT_DIR)/lib/libft.a
 
-# Compilation de libft
+# Répertoire source du projet
+SRC_DIR = src
+
+# Trouver tous les fichiers .c dans le répertoire src/
+SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+
+# Répertoire où seront stockés les fichiers objets
+OBJ_DIR = obj
+
+# Liste des fichiers objets (transformation des .c en .o dans obj/)
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
+
+# Default target : compile le projet principal
+all: $(PROJECT_NAME)
+
+$(PROJECT_NAME): $(LIBFT) $(OBJ_FILES)
+	@make -C $(LIBFT_DIR)
+	@echo "Linking $(PROJECT_NAME)..."
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ_FILES) -o $@ $(LIBFT)
+
+# Règle pour compiler les fichiers sources .c en fichiers objets .o
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
+
+# Création du répertoire obj s'il n'existe pas
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
 $(LIBFT):
-	@echo "Compilation de la libft..."
-	@$(MAKE) -C ./libft
+	make -C $(LIBFT_DIR)
 
-# Compilation des fichiers objets principaux
-%.o: %.c
-	@echo "Compilation de $<..."
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Compilation du fichier de test
-$(TEST_NAME): $(OBJ) $(TEST_OBJ) $(LIBFT)
-	@echo "Compilation des tests..."
-	$(CC) $(CFLAGS) $(OBJ) $(TEST_OBJ) $(LIBFT) -o $(TEST_NAME)
-	@echo "Compilation des tests terminée."
-
-# Règle de test : Compiler et exécuter les tests
-test: $(TEST_NAME) clean
-	@echo "Lancement des tests..."
-	./$(TEST_NAME)
-
-# Nettoyage des fichiers objets
+# Nettoyage des fichiers objets uniquement
 clean:
-	@echo "Nettoyage des fichiers objets..."
-	rm -f $(OBJ) $(TEST_OBJ)
+	@rm -rf $(OBJ_DIR)
+	@make -C $(LIBFT_DIR) clean
+	@echo "Cleaned object files."
 
-# Nettoyage complet (objets + exécutable principal + exécutable de tests)
+# Nettoyage complet : objets, exécutable principal et fichiers de test
 fclean: clean
-	@echo "Nettoyage complet..."
-	rm -f $(NAME) $(TEST_NAME)
+	@rm -f $(PROJECT_NAME)
+	@make -C $(LIBFT_DIR) fclean
+	@echo "Fully cleaned: removed executables and test binaries."
 
-# Recompile tout
+# Reconstruire tout (objets, exécutable principal, puis tests)
 re: fclean all
+	@echo "Rebuilt everything."
 
-# Déclaration des règles "phony"
-.PHONY: all clean fclean re test
+gf@5HNpxhXMb5eqN
