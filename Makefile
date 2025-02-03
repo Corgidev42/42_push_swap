@@ -58,5 +58,3 @@ fclean: clean
 # Reconstruire tout (objets, exécutable principal, puis tests)
 re: fclean all
 	@echo "Rebuilt everything."
-
-gf@5HNpxhXMb5eqN
