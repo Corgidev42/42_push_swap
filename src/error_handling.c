@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:15:48 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/03 11:22:55 by ezeppa           ###   ########.fr       */
+/*   Updated: 2025/02/13 12:24:58 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Gestion des erreurs d’entrée.
 #include "push_swap.h"
 
 int	check_digit_and_sign(char *str)

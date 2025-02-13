@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:15:11 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/03 13:44:18 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:24:45 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
-
-// Fonctions pour gérer les piles (ajout/suppression, affichage).
 
 t_stack	*create_stack(void)
 {
