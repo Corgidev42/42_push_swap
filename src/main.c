@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:14:47 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/13 12:20:54 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:09:42 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
  *
  * Si un seul argument est passé (argc == 2), il est supposé contenir une liste
 
-	* de nombres séparés par des espaces. Ces nombres sont alors extraits et traités.
+	* de nombres séparés par des espaces.
+	Ces nombres sont alors extraits et traités.
  * Si plusieurs arguments sont passés (argc > 2),
 	chaque argument est traité comme
  * un nombre individuel.

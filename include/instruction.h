@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:10:46 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/13 12:10:47 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:07:50 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	pb(t_stack *a, t_stack *b);
 
 /**
 
-	* @brief Fait tourner la pile a vers le haut (le premier élément devient le dernier).
+	* @brief Fait tourner la pile a vers le haut
+	(le premier élément devient le dernier).
  *
  * @param a Pointeur vers la pile a.
  */
@@ -63,7 +64,8 @@ void	ra(t_stack *a);
 
 /**
 
-	* @brief Fait tourner la pile b vers le haut (le premier élément devient le dernier).
+	* @brief Fait tourner la pile b vers le haut
+	(le premier élément devient le dernier).
  *
  * @param b Pointeur vers la pile b.
  */
@@ -79,7 +81,8 @@ void	rr(t_stack *a, t_stack *b);
 
 /**
 
-	* @brief Fait tourner la pile a vers le bas (le dernier élément devient le premier).
+	* @brief Fait tourner la pile a vers le bas
+	(le dernier élément devient le premier).
  *
  * @param a Pointeur vers la pile a.
  */
@@ -87,7 +90,8 @@ void	rra(t_stack *a);
 
 /**
 
-	* @brief Fait tourner la pile b vers le bas (le dernier élément devient le premier).
+	* @brief Fait tourner la pile b vers le bas
+	(le dernier élément devient le premier).
  *
  * @param b Pointeur vers la pile b.
  */
