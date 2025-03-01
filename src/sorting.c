@@ -3,7 +3,8 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42perpignan.fr>          +#+  +:+      
+	+#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:36:16 by vbonnard          #+#    #+#             */
 /*   Updated: 2025/02/03 13:45:49 by vbonnard         ###   ########.fr       */
@@ -44,8 +45,8 @@ void	best_move(t_move *move)
 	*move = temp;
 }
 
-void	calculate_move(t_stacks stacks, t_node *temp,
-	t_move *temp_move, int index_a)
+void	calculate_move(t_stacks stacks, t_node *temp, t_move *temp_move,
+		int index_a)
 {
 	temp_move->nb_ra = index_a;
 	temp_move->nb_rra = stacks.stack_a->size - index_a;
